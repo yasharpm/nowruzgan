@@ -61,12 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void addMarker(Location location) {
         Marker marker = new Marker(mMapView);
-        marker.setPosition(new GeoPoint(location.latitude, location.longitude));
+        location.apply(marker, this);
         marker.setTitle(location.title);
         marker.setSubDescription(location.latinTitle);
-        marker.setIcon(AppCompatResources.getDrawable(this, org.osmdroid.library.R.drawable.marker_default));
-        marker.setAnchor(0.5f, 1);
-        marker.setVisible(true);
         marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker, MapView mapView) {
